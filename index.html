@@ -1,45 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
-    <link rel="manifest" href="./favicon/site.webmanifest">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GeekInk Certificate Generator</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            geekink: "#15803d"
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Services</li>
-                <li>Contact</li>
-            </ul>
-        </nav>
-    </header>
 
-    <section>
-        <aside>
-            <ul>
-                <li id="reg">registration</li>
-                <li>login</li>
-                <li>logout</li>
-                <li>payments</li>
-                <li>receipt</li>
-            </ul>
-            </aside>
-        <article>
-            <p>welcome</p>
-            <p>second</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-        </article>
-    </section>
+<body class="bg-gray-100 p-6 min-h-screen flex flex-col items-center">
 
-    <!-- javascript -->
-    <script src="./js/index.js"></script>
+  <!-- ======================
+       INPUT FORM
+  ======================= -->
+  <div class="bg-white shadow-xl p-6 rounded-xl w-full max-w-xl space-y-4">
+
+    <h1 class="text-2xl font-bold text-geekink text-center">
+      GeekInk Certificate Generator
+    </h1>
+
+    <input id="studentName" type="text" placeholder="Student Name"
+      class="w-full border p-3 rounded-lg"/>
+
+    <input id="courseName" type="text" placeholder="Course Name"
+      class="w-full border p-3 rounded-lg"/>
+
+    <input id="date" type="date"
+      class="w-full border p-3 rounded-lg"/>
+
+    <button id="generateBtn"
+      class="w-full bg-geekink text-white py-3 rounded-lg font-bold hover:opacity-90">
+      Generate Certificate
+    </button>
+
+  </div>
+
+  <!-- ======================
+       CERTIFICATE PREVIEW
+  ======================= -->
+  <div id="certificate"
+    class="hidden mt-8 bg-white w-[900px] h-[600px] shadow-2xl border-8 border-geekink relative p-10 text-center">
+
+    <!-- Logo -->
+    <h2 class="text-3xl font-bold text-geekink">
+      GeekInk Innovations Ltd.
+    </h2>
+
+    <p class="mt-2 text-gray-500">Certificate of Completion</p>
+
+    <p class="mt-12 text-lg">This is to certify that</p>
+
+    <h1 id="previewName"
+      class="text-4xl font-bold text-gray-800 mt-4">
+      Student Name
+    </h1>
+
+    <p class="mt-6 text-lg">
+      has successfully completed the course
+    </p>
+
+    <h2 id="previewCourse"
+      class="text-2xl font-semibold text-geekink mt-2">
+      Course Name
+    </h2>
+
+    <p id="previewDate"
+      class="mt-8 text-gray-600">
+      Date
+    </p>
+
+    <!-- Signature -->
+    <div class="absolute bottom-10 left-10 text-left">
+      <div class="border-t w-40"></div>
+      <p class="text-sm">Instructor</p>
+      <p class="font-semibold">Adamu Muhammad Muhammad</p>
+      <p class="text-xs text-gray-500">GeekInk Mentor</p>
+    </div>
+
+    <!-- Stamp -->
+    <div class="absolute bottom-10 right-10 border-4 border-geekink rounded-full p-4 text-geekink font-bold rotate-12">
+      VERIFIED
+    </div>
+
+  </div>
+
+  <button id="downloadBtn"
+    class="hidden mt-4 bg-geekink text-white px-6 py-3 rounded-lg font-bold">
+    Download Certificate
+  </button>
+
+<script src="script.js"></script>
 </body>
 </html>
